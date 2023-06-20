@@ -1,18 +1,21 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+// Icon
+import AppIcon from "../components/AppIcon";
 
 // Screens
 import HomeScreen from "./screens/HomeScreen";
-import SideQuestScreen from "./screens/SideQuestScreen";
+import SideQuestContainer from "./SideQuestContainer";
 import TimerScreen from "./screens/TimerScreen";
 import LeaderboardScreen from "./screens/LeaderboardScreen";
 import RewardScreen from "./screens/RewardScreen";
 
 // Screen Names
 const homeName = "Home";
-const sideQuestName = "Side Quests";
+const sideQuestName = "Side Quest Main";
 const timerName = "Pomodoro Timer";
 const leaderboardName = "Leaderboard";
 const rewardScreen = "Rewards";
@@ -24,7 +27,7 @@ function MainContainer() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-            headerShown: false,
+          headerShown: false,  
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
               let rn = route.name;
@@ -43,12 +46,18 @@ function MainContainer() {
 
               return <MaterialCommunityIcons name={iconName} size={size} color={color} />
             },
-            tabBarActiveTintColor: "teal",
+            tabBarActiveTintColor: "#6b9383",
             tabBarInactiveTintColor: "grey"
           })}>
 
-        <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={sideQuestName} component={SideQuestScreen} />
+        <Tab.Screen 
+          name={homeName} 
+          component={HomeScreen}
+          options={{
+            tabBarIcon: () => <AppIcon />,
+          }}
+          />
+        <Tab.Screen name={sideQuestName} component={SideQuestContainer} />
         <Tab.Screen name={timerName} component={TimerScreen} />
         <Tab.Screen name={leaderboardName} component={LeaderboardScreen} />
         <Tab.Screen name={rewardScreen} component={RewardScreen} />
