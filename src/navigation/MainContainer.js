@@ -15,15 +15,10 @@ import RewardScreen from "./screens/RewardScreen";
 
 // Screen Names
 const homeName = "Home";
-<<<<<<< Updated upstream
-const sideQuestName = "SideQuest";
-const timerName = "Timer";
-=======
 const sideQuestName = "Side Quest Main";
 const timerName = "Pomodoro Timer";
->>>>>>> Stashed changes
 const leaderboardName = "Leaderboard";
-const rewardScreen = "Reward";
+const rewardScreen = "Rewards";
 
 const Tab = createBottomTabNavigator();
 

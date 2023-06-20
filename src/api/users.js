@@ -1,15 +1,140 @@
+
+
 userList = [
 	{
 		id: 1,
-		name: "Brain",
+		name: "Norman",
 		email: "hack@brain.wtv",
 		password: "encryptedPassword",
+        currExp: 170,
+        level: 3,
+        pics: 'https://picsum.photos/200/300'
 	},
 	{
 		id: 2,
-		name: "Drake",
+		name: "Helin",
 		email: "iam@canada.here",
 		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/id/237/200/300'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
+	},
+    {
+		id: 2,
+		name: "Wei hong",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+        level: 5,
+        currExp: 250,
+        pics: 'https://picsum.photos/200/300?grayscale'
 	}
 ]
 
