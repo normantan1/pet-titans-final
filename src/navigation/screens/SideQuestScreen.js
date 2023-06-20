@@ -1,29 +1,21 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Button, FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // components
 import SideQuestList from "../../components/sidequest/SideQuestList";
 
 function SideQuestScreen() {
-  const navigation = useNavigation();
-
   return (
-    <View style={styles.container}>
-      <SideQuestList />
-      <Button
-        onPress={() => navigation.navigate("Quest Complete")}
-        title="Test"
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+        <SideQuestList />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1
   },
 });
 

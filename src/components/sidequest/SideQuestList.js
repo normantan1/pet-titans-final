@@ -1,24 +1,30 @@
 import * as React from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-const data = [
-  { id: '1', title: 'Item 1' },
-  { id: '2', title: 'Item 2' },
-  { id: '3', title: 'Item 3' },
-  { id: '4', title: 'Item 4' },
-];
+// api
+import { quest } from "../../api/quest";
 
+const data = quest;
 
 const SideQuestList = ({ navigation }) => {
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={handleItemClick} style={styles.items}>
-      <Text style={styles.itemText}> {item.title} </Text>
-    </TouchableOpacity>
+    <View style={styles.listContainer}>
+      <TouchableOpacity onPress={handleItemClick} style={styles.items}>
+        <Text style={styles.itemHeaderText}> Side Quest {item.id} </Text>
+        <Text style={styles.itemText}> {item.title} </Text>
+      </TouchableOpacity>
+      <View style={styles.darkenedMargin} />
+    </View>
   );
 
   const handleItemClick = (item) => {
-    navigation.navigate(item.title)
+    navigation.navigate("Quest Complete");
   };
 
   return (
@@ -27,27 +33,36 @@ const SideQuestList = ({ navigation }) => {
         data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
-        />
+      />
     </View>
   );
-
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16
+  },
+  listContainer: {
+    flex: 1,
+    flexDirection: "column"
   },
   items: {
-    padding: 10,
-    marginBottom: 10,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 5,
+    padding: 30,
+    backgroundColor: "#FFD89C",
+    width: "100%"
+  },
+  itemHeaderText: {
+    fontSize: 25,
+    fontWeight: "bold",
   },
   itemText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  }
-})
+    fontSize: 12,
+  },
+  darkenedMargin: {
+    height: 0.3,
+    width: "100%",
+    backgroundColor: "black",
+  },
+});
 
 export default SideQuestList;
