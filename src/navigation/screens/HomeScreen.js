@@ -2,11 +2,11 @@ import * as React from "react";
 import { View, Text, SafeAreaView, StyleSheet, Image, FlatList } from "react-native";
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import * as Progress from 'react-native-progress';
-import api from "../../api/users.js";
-import { quest } from "../../api/quest.js";
+import api, { currentUserId, getUser } from "../../api/users.js";
+import { getQuests } from "../../api/quest.js";
 
 function HomeScreen() {
-    const user = userList[0]
+	const user = getUser(currentUserId);
 
     const processLevel = (exp) => {
         return Math.floor(exp / 100) + 1;
@@ -71,7 +71,7 @@ function HomeScreen() {
             </View>
             <View style = {styles.box4}>
                 <FlatList
-                    data={quest}
+                    data={getQuests()}
                     renderItem={({item}) => <Item title={item.title} id = {item.id}/>}
                     keyExtractor={item => item.id}
                     horizontal = {true}

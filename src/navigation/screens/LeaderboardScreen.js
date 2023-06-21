@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, SafeAreaView, StyleSheet } from "react-native";
-import UserAPI from "../../api/users.js";
+import {getUserList} from "../../api/users.js";
 import Leaderboard from 'react-native-leaderboard';
 
 function LeaderboardScreen() {
@@ -12,7 +12,7 @@ function LeaderboardScreen() {
                 </Text>
             </View>
             <Leaderboard 
-                data = {userList}
+                data = {getUserList()}
                 sortBy='currExp' 
                 labelBy='name'
                 evenRowColor = 'darkorange'

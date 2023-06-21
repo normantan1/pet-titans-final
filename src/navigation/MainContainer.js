@@ -12,7 +12,8 @@ import HomeScreen from "./screens/HomeScreen";
 import SideQuestScreen from "./screens/SideQuestScreen";
 import TimerScreen from "./screens/TimerScreen";
 import LeaderboardScreen from "./screens/LeaderboardScreen";
-import RewardScreen from "./screens/RewardScreen";
+import RewardsContainer from "./RewardsContainer";
+// import Rewards from "./screens/RewardScreen";
 import RewardsRedeemsScreen from "./screens/RewardRedeemScreen";
 
 // Screen Names
@@ -62,7 +63,7 @@ function MainContainer() {
         <Tab.Screen name={sideQuestName} component={SideQuestScreen} />
         <Tab.Screen name={timerName} component={TimerScreen} />
         <Tab.Screen name={leaderboardName} component={LeaderboardScreen} />
-        <Tab.Screen name={rewardScreen} component={RewardScreen} />
+        <Tab.Screen name={rewardScreen} component={RewardsContainer} />
 
       </Tab.Navigator>
     </NavigationContainer>

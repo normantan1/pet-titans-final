@@ -10,9 +10,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 // api
-import { quest } from "../../api/quest";
+import { getQuests } from "../../api/quest";
 
-const data = quest;
+const data = getQuests();
 
 const SideQuestList = () => { 
   const [modalVisible, setModalVisible] = useState(false);
