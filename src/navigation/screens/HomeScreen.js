@@ -21,7 +21,7 @@ function HomeScreen() {
     }
 
     const processStage = (level) => {
-        if (1 <= level <= 3) {
+        if (level <= 3) {
             return 'Baby';
         } else if (4 <= level <= 7) {
             return 'Teenager'
@@ -30,12 +30,18 @@ function HomeScreen() {
         }
     }
 
+    function processDimension(exp) {
+
+        return 190 + ((Math.floor(exp / 100) + 1) * 10)
+    }
+
     const Item = ({title, id}) => (
         <View style={styles.item}>
           <Text style={styles.id}>Side Quest {id}</Text>
            <Text style={styles.title}>{title}</Text>
         </View>
     );
+
 
     
       
@@ -66,8 +72,8 @@ function HomeScreen() {
             </View>
             <View style = {styles.box3}>
                 <Image
-                source={require('../../../assets/dog.gif')}
-                style={{ width: 300, height: 250 }}
+                source={processLevel(user.currExp) == 1? require('../../../assets/egg.png'): require('../../../assets/penguin.png')}
+                style={{ width: processDimension(user.currExp), height: processDimension(user.currExp) }}
                 resizeMode="contain"
                 />
             </View>
