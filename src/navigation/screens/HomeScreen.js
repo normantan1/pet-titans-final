@@ -1,11 +1,26 @@
 import * as React from "react";
-import { View, Text, SafeAreaView, StyleSheet, Image, FlatList } from "react-native";
+import {useState} from "react";
+import { View, Text, SafeAreaView, StyleSheet, Image, FlatList, TouchableOpacity, Modal } from "react-native";
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import * as Progress from 'react-native-progress';
 import api, { currentUserId, getUser } from "../../api/users.js";
 import { getQuests } from "../../api/quest.js";
 
 function HomeScreen() {
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const handleItemClick = (item) => {
+        setSelectedItem(item);
+        setModalVisible(true);
+    };
+
+    const closeModal = () => {
+        setModalVisible(false);
+        setSelectedItem(null);
+      };
+
 	const user = getUser(currentUserId);
 
     const processLevel = (exp) => {
@@ -31,10 +46,10 @@ function HomeScreen() {
     }
 
     const Item = ({title, id}) => (
-        <View style={styles.item}>
+        <TouchableOpacity onPress={() => handleItemClick(title, id)} style={styles.item}>
           <Text style={styles.id}>Side Quest {id}</Text>
            <Text style={styles.title}>{title}</Text>
-        </View>
+        </TouchableOpacity>
     );
       
       
@@ -68,6 +83,7 @@ function HomeScreen() {
                 style={{ width: 300, height: 250 }}
                 resizeMode="contain"
                 />
+                
             </View>
             <View style = {styles.box4}>
                 <FlatList
