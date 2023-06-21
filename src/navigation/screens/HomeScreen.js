@@ -8,8 +8,10 @@ import { getQuests } from "../../api/quest.js";
 
 function HomeScreen() {
 
+    
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [quest, setQuest] = useState(getQuests())
 
     const handleItemClick = (item) => {
         setSelectedItem(item);
@@ -22,6 +24,14 @@ function HomeScreen() {
       };
 
 	const user = getUser(currentUserId);
+    
+    const [exp, setExp] = useState(user.currExp)
+
+    const [size, setSize] = useState(100)
+
+
+
+    
 
     const processLevel = (exp) => {
         return Math.floor(exp / 100) + 1;
@@ -35,22 +45,22 @@ function HomeScreen() {
         return exp%100/100;
     }
 
-    const processStage = (level) => {
-        if (1 <= level <= 3) {
-            return 'Baby';
-        } else if (4 <= level <= 7) {
-            return 'Teenager'
-        } else {
-            return 'Adult'
-        }
-    }
 
-    const Item = ({title, id}) => (
-        <TouchableOpacity onPress={() => handleItemClick(title, id)} style={styles.item}>
+    const Item = ({ title, id }) => (
+        <TouchableOpacity
+          onPress={() => {
+            const updatedQuests = quest.filter((item) => item.id !== id);
+    setQuest(updatedQuests);
+            setExp(exp + 50);
+            setSize(size + 10);
+          }}
+          style={styles.item}
+        >
           <Text style={styles.id}>Side Quest {id}</Text>
-           <Text style={styles.title}>{title}</Text>
+          <Text style={styles.title}>{title}</Text>
         </TouchableOpacity>
-    );
+      );
+
       
       
     return (
@@ -60,11 +70,11 @@ function HomeScreen() {
             </View>
             <View style = {styles.box2}>
                 <View style = {styles.box2text}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 20}}>Level {processLevel(user.currExp)} - {processStage(processLevel(user.currExp))}</Text>
+                    <Text style = {{fontWeight: 'bold', fontSize: 20}}>Level {processLevel(exp)}</Text>
                 </View>
                 <View style = {{flexDirection: 'row', flex: 1}}>
                     <View style = {styles.box2progressbar}>
-                        <Progress.Bar progress={processProgress(user.currExp)} width={300} height={20} borderRadius={10} color='darkorange'/>
+                        <Progress.Bar progress={processProgress(exp)} width={300} height={20} borderRadius={10} color='darkorange'/>
                     </View>
                     <View style = {{marginTop: 0}}>
                         <Image source = {require('../../../assets/titan.png')}
@@ -73,28 +83,34 @@ function HomeScreen() {
                     </View>
                 </View>
                 <View style = {{justifyContent: "space-between" , flexDirection: 'row'}}>
-                    <Text style = {{marginLeft:35}}> {processExp(user.currExp)} titans </Text>
-                    <Text style = {{marginRight:50}}> {100 - processExp(user.currExp)} titans </Text>
+                    <Text style = {{marginLeft:35}}> {processExp(exp)} titans </Text>
+                    <Text style = {{marginRight:50}}> {100 - processExp(exp)} titans </Text>
                 </View>
             </View>
             <View style = {styles.box3}>
                 <Image
-                source={require('../../../assets/dog.gif')}
-                style={{ width: 300, height: 250 }}
+                source={exp < 80? require('../../../assets/egg.png'): require('../../../assets/dog.gif')}
+                style={{ width: size, height: size }}
                 resizeMode="contain"
                 />
                 
             </View>
-            <View style = {styles.box4}>
-                <FlatList
-                    data={getQuests()}
-                    renderItem={({item}) => <Item title={item.title} id = {item.id}/>}
-                    keyExtractor={item => item.id}
-                    horizontal = {true}
-                    showsHorizontalScrollIndicator={false}
-                />
-            </View>
-        </SafeAreaView>
+            <View style={styles.box4}>
+        {quest.length === 0 ? (
+          <Text style={styles.completedText}>All quests completed 🔥</Text>
+        ) : (
+          <FlatList
+            data={quest}
+            renderItem={({ item }) => (
+              <Item title={item.title} id={item.id} />
+            )}
+            keyExtractor={(item) => item.id.toString()}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
+        )}
+      </View>
+    </SafeAreaView>
     )
 }
 
@@ -165,6 +181,12 @@ const styles = StyleSheet.create({
       },
       title : {
         fontSize: 15,
+      },
+      
+      completedText: {
+        textAlign: 'center',
+        fontFamily:'Baskerville',
+        fontSize: 30
       }
 })
 

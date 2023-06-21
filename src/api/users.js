@@ -4,7 +4,7 @@ userList = [
 		name: "Norman",
 		email: "hack@brain.wtv",
 		password: "encryptedPassword",
-        currExp: 170,
+        currExp: 0,
         level: 2,
         pics: 'https://picsum.photos/200/300'
 	},
