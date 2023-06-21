@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     },
     header: {
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: "Baskerville"
     }
 })
 

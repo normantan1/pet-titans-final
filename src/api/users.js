@@ -1,13 +1,12 @@
-const userList = [
+userList = [
 	{
 		id: 1,
 		name: "Norman",
 		email: "hack@brain.wtv",
 		password: "encryptedPassword",
-		currExp: 170,
-		level: 3,
-		pics: 'https://picsum.photos/200/300',
-		credits: 500,
+        currExp: 170,
+        level: 2,
+        pics: 'https://picsum.photos/200/300'
 	},
 	{
 		id: 2,
