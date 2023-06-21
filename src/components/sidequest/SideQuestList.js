@@ -8,9 +8,9 @@ import {
 } from "react-native";
 
 // api
-import { quest } from "../../api/quest";
+import { getQuests } from "../../api/quest";
 
-const data = quest;
+const data = getQuests();
 
 const SideQuestList = ({ navigation }) => {
   const renderItem = ({ item }) => (
