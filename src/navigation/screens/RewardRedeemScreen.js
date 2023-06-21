@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 //Define RewardsRedeem component
 const RewardsRedeemsScreen = ({ navigation, route }) => {
     // Extract the reward data from the route parameters
-    const { reward } = route.params;
+    //const { reward } = route.params;
 
     return (
         <View style={styles.container}>

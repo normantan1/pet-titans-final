@@ -4,21 +4,25 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { currentUserId, getUser } from '../../api/users';
 import { getRewardList } from '../../api/rewards';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
+// components
+import Header from '../../components/rewards/Header';
+import Boxes from '../../components/rewards/Boxes';
 
-export default function RewardsPage({ navigation }) {
-    const Header = () => {
-        return (
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>Rewards</Text>
-                <Image source={require("../../assets/trophy.png")} style={styles.headerIcon} />
-                <View style={styles.creditContainer}>
-                    <Text style={styles.creditText}>{creditsLeft}</Text>
-                    <Image source={require("../../assets/credit.png")} style={styles.creditIcon} />
-                </View>
-            </View>
-        )
-    }
+export default function RewardScreen({ navigation }) {
+    // const Header = () => {
+    //     return (
+    //         <View style={styles.header}>
+    //             <Text style={styles.headerTitle}>Rewards</Text>
+    //             <Image source={require("../../assets/trophy.png")} style={styles.headerIcon} />
+    //             <View style={styles.creditContainer}>
+    //                 <Text style={styles.creditText}>{creditsLeft}</Text>
+    //                 <Image source={require("../../assets/credit.png")} style={styles.creditIcon} />
+    //             </View>
+    //         </View>
+    //     )
+    // }
 
     const Boxes = ({ navigation }) => {
         return (
@@ -48,35 +52,18 @@ export default function RewardsPage({ navigation }) {
     const [creditsLeft, setCreditsLeft] = useState(getUser(currentUserId).credits); // Example value, replace with your actual credits
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Header />
             <Boxes />
-        </View>
+        </SafeAreaView>
     );
 };
-
-
-// function RewardRedeemScreen() {
-//     return (
-
-//     )
-// }
-
-// const Stack = createStackNavigator()
-
-// export default function RewardScreenStack() {
-//     return (
-//         <Stack.Navigator>
-//             <Stack.Screen name='Rewards Home' component={RewardScreen} />
-//         </Stack.Navigator>
-//     )
-
-// }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
+
     },
     header: {
         flexDirection: 'row',
