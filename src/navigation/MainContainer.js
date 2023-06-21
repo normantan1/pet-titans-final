@@ -4,6 +4,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+// Icons
+import AppIcon from "../components/AppIcon";
+
+
 // Screens
 import HomeScreen from "./screens/HomeScreen";
 import SideQuestContainer from "./SideQuestContainer";
@@ -22,7 +26,7 @@ const rewardScreen = "Rewards";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function TabContainer() {
+function MainContainer() {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -66,15 +70,15 @@ function TabContainer() {
   );
 }
 
-function MainContainer() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={TabContainer} />
+// function MainContainer() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen name='Home' component={TabContainer} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
 
 export default MainContainer;
