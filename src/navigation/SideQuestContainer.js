@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 function SideQuestContainer() {
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Side Quests" component={SideQuestScreen} />
+            <Stack.Screen name="Side Quest Main" component={SideQuestScreen} />
             <Stack.Screen name="Quest Complete" component={QuestCompleteScreen} />
         </Stack.Navigator>
     )
