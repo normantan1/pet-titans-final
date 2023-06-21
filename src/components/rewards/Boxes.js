@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { rewards } from "../../api/rewards"
 
 export default function Boxes() {
     const navigation = useNavigation();
@@ -18,6 +19,8 @@ export default function Boxes() {
 
     ];
 
+    //const rewards = 
+
     return (
         <View style={styles.boxContainer}>
             <ScrollView contentContainerStyle={styles.rewardList}
@@ -27,7 +30,7 @@ export default function Boxes() {
                         <TouchableOpacity
                             key={reward.id}
                             style={styles.rewardItem}
-                            onPress={() => { navigation.navigate("RewardsRedeemScreen") }}
+                            onPress={() => { navigation.navigate("RewardsRedeemScreen", { reward }) }}
                         //onPress={() => alert('Reward redeemed!')}
                         >
                             <Text style={styles.rewardName}>{reward.name}</Text>
