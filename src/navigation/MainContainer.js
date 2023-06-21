@@ -14,7 +14,7 @@ import RewardsRedeemsScreen from "./screens/RewardRedeemScreen";
 
 // Screen Names
 const homeName = "Home";
-const sideQuestName = "Side Quest Main";
+const sideQuestName = "Side Quests";
 const timerName = "Pomodoro Timer";
 const leaderboardName = "Leaderboard";
 const rewardScreen = "Rewards";
