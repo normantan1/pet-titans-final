@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
-import { View, Text, SafeAreaView, StyleSheet, Image, FlatList, TouchableOpacity, Modal } from "react-native";
+import { View, Text, SafeAreaView, StyleSheet, Image, FlatList, TouchableOpacity, Modal, Button } from "react-native";
 import { ProgressBar, MD3Colors } from 'react-native-paper';
 import * as Progress from 'react-native-progress';
 import api, { currentUserId, getUser } from "../../api/users.js";
@@ -27,7 +27,7 @@ function HomeScreen() {
     
     const [exp, setExp] = useState(user.currExp)
 
-    const [size, setSize] = useState(100)
+    const [size, setSize] = useState(150)
 
 
 
@@ -48,18 +48,21 @@ function HomeScreen() {
 
     const Item = ({ title, id }) => (
         <TouchableOpacity
-          onPress={() => {
-            const updatedQuests = quest.filter((item) => item.id !== id);
-    setQuest(updatedQuests);
-            setExp(exp + 50);
-            setSize(size + 10);
-          }}
           style={styles.item}
         >
           <Text style={styles.id}>Side Quest {id}</Text>
           <Text style={styles.title}>{title}</Text>
+          <TouchableOpacity onPress={() => {
+            const updatedQuests = quest.filter((item) => item.id !== id);
+            setQuest(updatedQuests);
+            setExp(exp + 50);
+            setSize(size + 10);
+          }}style={styles.button}>
+            <Text style={styles.buttonText}>Complete</Text>
+          </TouchableOpacity>
         </TouchableOpacity>
       );
+      
 
       
       
@@ -187,7 +190,19 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily:'Baskerville',
         fontSize: 30
-      }
+      },
+
+      button: {
+        backgroundColor: 'darkorange',
+        borderRadius: 8,
+        marginTop: 5,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+      },
+      buttonText: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
 })
 
 
