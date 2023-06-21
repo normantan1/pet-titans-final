@@ -1,7 +1,6 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 // Icons
@@ -10,7 +9,7 @@ import AppIcon from "../components/AppIcon";
 
 // Screens
 import HomeScreen from "./screens/HomeScreen";
-import SideQuestContainer from "./SideQuestContainer";
+import SideQuestScreen from "./screens/SideQuestScreen";
 import TimerScreen from "./screens/TimerScreen";
 import LeaderboardScreen from "./screens/LeaderboardScreen";
 import RewardScreen from "./screens/RewardScreen";
@@ -24,13 +23,13 @@ const leaderboardName = "Leaderboard";
 const rewardScreen = "Rewards";
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 function MainContainer() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             let rn = route.name;
@@ -60,7 +59,7 @@ function MainContainer() {
             tabBarIcon: () => <AppIcon />,
           }}
         />
-        <Tab.Screen name={sideQuestName} component={SideQuestContainer} />
+        <Tab.Screen name={sideQuestName} component={SideQuestScreen} />
         <Tab.Screen name={timerName} component={TimerScreen} />
         <Tab.Screen name={leaderboardName} component={LeaderboardScreen} />
         <Tab.Screen name={rewardScreen} component={RewardScreen} />
@@ -69,16 +68,5 @@ function MainContainer() {
     </NavigationContainer>
   );
 }
-
-// function MainContainer() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen name='Home' component={TabContainer} />
-
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 
 export default MainContainer;

@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 56,
     fontWeight: "400",
     color: "#F97B22",
+    fontFamily: "Baskerville"
   },
 });
 

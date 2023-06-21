@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     marginBottom: 10,
     color: "#9CA777",
+    fontFamily: "Baskerville"
   },
 });
 

@@ -1,5 +1,3 @@
-
-
 userList = [
 	{
 		id: 1,
@@ -7,7 +5,7 @@ userList = [
 		email: "hack@brain.wtv",
 		password: "encryptedPassword",
         currExp: 170,
-        level: 3,
+        level: 2,
         pics: 'https://picsum.photos/200/300'
 	},
 	{

@@ -36,8 +36,6 @@ function HomeScreen() {
            <Text style={styles.title}>{title}</Text>
         </View>
     );
-
-    
       
       
     return (
@@ -112,7 +110,8 @@ const styles = StyleSheet.create({
     
     header: {
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
+        fontFamily: "Baskerville"
     },
 
     box2progressbar: {
