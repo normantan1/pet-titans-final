@@ -1,53 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-// components
-import Header from '../../components/rewards/Header';
-import Boxes from '../../components/rewards/Boxes';
-
-export default function RewardScreen({ navigation }) {
-    // const Header = () => {
-    //     return (
-    //         <View style={styles.header}>
-    //             <Text style={styles.headerTitle}>Rewards</Text>
-    //             <Image source={require("../../assets/trophy.png")} style={styles.headerIcon} />
-    //             <View style={styles.creditContainer}>
-    //                 <Text style={styles.creditText}>{creditsLeft}</Text>
-    //                 <Image source={require("../../assets/credit.png")} style={styles.creditIcon} />
-    //             </View>
-    //         </View>
-    //     )
-    // }
-
-    // const Boxes = ({ navigation }) => {
-    //     return (
-    //         <View style={styles.boxContainer}>
-    //             <ScrollView contentContainerStyle={styles.rewardList}
-    //                 contentInset={{ bottom: 200 }}>
-    //                 <View style={styles.rewardGrid}>
-    //                     {rewards.map((reward) => (
-    //                         <TouchableOpacity
-    //                             key={reward.id}
-    //                             style={styles.rewardItem}
-    //                             onPress={() => { navigation.navigate('Home') }}
-    //                         //onPress={() => alert('Reward redeemed!')}
-    //                         >
-    //                             <Text style={styles.rewardName}>{reward.name}</Text>
-    //                             <Image source={reward.image} style={styles.rewardImage} />
-    //                             <Text style={styles.rewardDescription}>{reward.description}</Text>
-    //                             <Text style={styles.rewardPoints}>{reward.points} points</Text>
-    //                         </TouchableOpacity>
-    //                     ))}
-    //                 </View>
-    //             </ScrollView>
-    //         </View>
-    //     )
-    // }
-
-    const [creditsLeft, setCreditsLeft] = useState(500); // Example value, replace with your actual credits
+export default function Boxes() {
+    const navigation = useNavigation();
 
     const rewards = [
         { id: 1, name: 'Reward 1', points: 100, description: "123", image: require("../../assets/GV.png") },
@@ -62,18 +19,33 @@ export default function RewardScreen({ navigation }) {
     ];
 
     return (
-        <SafeAreaView style={styles.container}>
-            <Header />
-            <Boxes />
-        </SafeAreaView>
-    );
-};
+        <View style={styles.boxContainer}>
+            <ScrollView contentContainerStyle={styles.rewardList}
+                contentInset={{ bottom: 200 }}>
+                <View style={styles.rewardGrid}>
+                    {rewards.map((reward) => (
+                        <TouchableOpacity
+                            key={reward.id}
+                            style={styles.rewardItem}
+                            onPress={() => { navigation.navigate("RewardsRedeemScreen") }}
+                        //onPress={() => alert('Reward redeemed!')}
+                        >
+                            <Text style={styles.rewardName}>{reward.name}</Text>
+                            <Image source={reward.image} style={styles.rewardImage} />
+                            <Text style={styles.rewardDescription}>{reward.description}</Text>
+                            <Text style={styles.rewardPoints}>{reward.points} points</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </ScrollView>
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-
     },
     header: {
         flexDirection: 'row',
@@ -166,5 +138,5 @@ const styles = StyleSheet.create({
     rewardDescription: {
         fontSize: 12,
         textAlign: 'center',
-    },
+    }
 });
