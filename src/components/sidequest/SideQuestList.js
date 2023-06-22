@@ -8,15 +8,18 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-
 // api
 import { getQuests } from "../../api/quest";
+import { currentUserId, getUserList, getUser } from "../../api/users";
 
 const data = getQuests();
+const currentUser = getUser(currentUserId);
 
 const SideQuestList = () => { 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [userCredits, setUserCredits] = useState(currentUser.credits);
+  const [userExp, setUserExp] = useState(currentUser.currExp)
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
@@ -27,6 +30,21 @@ const SideQuestList = () => {
     setModalVisible(false);
     setSelectedItem(null);
   };
+
+  const addExp = () => {
+    const updatedExp = userExp + 45;
+    setUserExp(updatedExp);
+    currentUser.currExp = currentUser.currExp + 15;
+    console.log(currentUser.currExp);
+  };
+
+
+  const addCredits = () => {
+    const updatedCredits = userCredits + 15;
+    setUserCredits(updatedCredits);
+    currentUser.credits = currentUser.credits + 15;
+    console.log(currentUser.credits);
+  }
 
   const renderItem = ({ item }) => (
     <View style={styles.listContainer}>
@@ -55,22 +73,21 @@ const SideQuestList = () => {
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
               <Pressable style={styles.modalButton} onPress={closeModal}>
-                <MaterialCommunityIcons name="close" size="25" color={"grey"}/>
+                <MaterialCommunityIcons name="close" size={25} color={"grey"}/>
               </Pressable>
               <Text style={styles.modalTitle}> Side Quest {selectedItem.id}</Text>
               <Text style={styles.modalText}> {selectedItem.title} </Text>
-              {/* Add additional details or components here */}
               <View style={styles.modalBtmContainer}>
                 <View style={styles.leftBox}>
-                  <Text style={styles.titanText}> 20 Titans </Text>
+                  <Text style={styles.titanText}> {selectedItem.exp} Titans </Text>
                 </View>
                 <Image source = {require('../../../assets/titan.png')} style={{ width: "10%", height: "30%" }} resizeMode="contain"/>
-                <MaterialCommunityIcons name="cash" size={35} color={"grey"}  />
+                <MaterialCommunityIcons name="cash" size={30} color={"grey"}  />
                 <View style={styles.rightBox}>
-                  <Text style={styles.titanText}> 10 Credits </Text>
+                  <Text style={styles.titanText}> {selectedItem.credits} Credits </Text>
                 </View>
               </View>
-              <TouchableOpacity style={styles.completeButton} onPress={(e) => { closeModal(e); f(e); }}>
+              <TouchableOpacity style={styles.completeButton} onPress={(e) => { closeModal(e); addCredits(e); addExp(e); }}>
                 <Text style={styles.completeButtonText}>Complete</Text>
               </TouchableOpacity>
             </View>
@@ -91,7 +108,7 @@ const styles = StyleSheet.create({
   },
   items: {
     padding: 30,
-    backgroundColor: "#FFD89C",
+    backgroundColor: "#689681",
     width: "100%"
   },
   itemHeaderText: {
