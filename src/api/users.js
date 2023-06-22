@@ -1,12 +1,22 @@
 userList = [
-  {
-    id: 1,
-    name: "Norman",
-    email: "hack@brain.wtv",
-    password: "encryptedPassword",
-    currExp: 170,
-    level: 2,
-    pics: "https://picsum.photos/200/300",
+	{
+		id: 1,
+		name: "Norman",
+		email: "hack@brain.wtv",
+		password: "encryptedPassword",
+        currExp: 0,
+        level: 2,
+        pics: 'https://picsum.photos/200/300'
+	},
+	{
+		id: 2,
+		name: "Helin",
+		email: "iam@canada.here",
+		password: "encryptedPassword",
+		level: 5,
+		currExp: 250,
+		pics: 'https://picsum.photos/id/237/200/300',
+
 		credits: 500,
   },
   {
