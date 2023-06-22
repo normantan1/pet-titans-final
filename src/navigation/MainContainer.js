@@ -49,7 +49,7 @@ function MainContainer() {
 
             return <MaterialCommunityIcons name={iconName} size={size} color={color} />
           },
-          tabBarActiveTintColor: "teal",
+          tabBarActiveTintColor: "#689681",
           tabBarInactiveTintColor: "grey"
         })}>
 
