@@ -2,24 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { rewards } from "../../api/rewards"
+import { getRewardList } from "../../api/rewards"
 
 export default function Boxes() {
     const navigation = useNavigation();
 
-    const rewards = [
-        { id: 1, name: 'Reward 1', points: 100, description: "123", image: require("../../assets/GV.png") },
-        { id: 2, name: 'Reward 2', points: 200, description: "456", image: require("../../assets/GV.png") },
-        { id: 3, name: 'Reward 3', points: 300, description: "789", image: require("../../assets/GV.png") },
-        { id: 4, name: 'Reward 4', points: 400, description: "dtt3", image: require("../../assets/GV.png") },
-        { id: 5, name: 'Reward 5', points: 400, description: "343", image: require("../../assets/GV.png") },
-        { id: 6, name: 'Reward 6', points: 400, description: "686", image: require("../../assets/GV.png") },
-        { id: 7, name: 'Reward 7', points: 400, description: "069", image: require("../../assets/GV.png") },
-        { id: 8, name: 'Reward 8', points: 400, description: "249", image: require("../../assets/GV.png") },
-
-    ];
-
-    //const rewards = 
+    const rewards = getRewardList();
 
     return (
         <View style={styles.boxContainer}>
