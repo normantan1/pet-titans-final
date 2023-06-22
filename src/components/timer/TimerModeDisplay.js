@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 40,
     marginBottom: 10,
-    color: "#9CA777",
+    color: "black",
     fontFamily: "Baskerville"
   },
 });

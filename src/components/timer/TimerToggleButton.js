@@ -17,7 +17,7 @@ const TimerToggleButton = ({ isActive, onStart, onPause }) => {
           style={styles.icon}
           name={isActive ? "pause" : "play"}
           size={40}
-          color="#7C9070"
+          color="black"
         />
       </View>
     </Pressable>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 70 / 2,
     justifyContent: "center",
-    borderColor: "#7C9070",
+    borderColor: "black",
     marginVertical: 20,
   },
   icon: { alignSelf: "center" },

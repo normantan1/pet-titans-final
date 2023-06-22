@@ -105,10 +105,11 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     flexDirection: "column"
+
   },
   items: {
     padding: 30,
-    backgroundColor: "#689681",
+    backgroundColor: "beige",
     width: "100%"
   },
   itemHeaderText: {
